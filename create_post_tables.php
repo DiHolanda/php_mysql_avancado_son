@@ -2,7 +2,7 @@
 
 $conn = require __DIR__.'/utils/connection.php';
 
-$sql = '
+/*$sql = '
 	CREATE TABLE posts(
 		id INT AUTO_INCREMENT PRIMARY KEY,
 		title VARCHAR(50) NOT NULL,
@@ -12,4 +12,8 @@ $sql = '
 
 if(!$conn->query($sql)){
 	die('erro: tabela já existe');
-}
+}*/
+
+$result = $conn->query('DESCRIBE posts');
+
+var_dump($result->fetch_all(MYSQLI_ASSOC));
