@@ -5,6 +5,9 @@ $conn = require __DIR__.'/utils/connection.php';
 // recebe valores via terminal e armazena a partir da posição 1, já que a posição corresponde ao nome do arquivo
 $term = $argv[1] ?? null;
 
+//concatena o operador que permite buscar conteúdo que tenha algo a mais escrito além do termo de busca
+$term = '%' . $term . '%';
+
 $stmt = $conn->prepare('SELECT * FROM posts WHERE title LIKE ?;');
 
 $stmt->bind_param('s', $term);
