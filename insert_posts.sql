@@ -1,4 +1,4 @@
 INSERT INTO posts (title, body) VALUES 
 ("Laravel framework", "O Laravel é muito utilizado hoje em dia"),
-("Cake PHP", "Framework de desenvolvimento rápido"),
-("Slim frameqork", "Micro framework, podemos utilizar o Eloquent do Laravel nele");
+("CakePHP", "Framework de desenvolvimento rápido"),
+("Slim framework", "Micro framework, podemos utilizar o Eloquent do Laravel nele");
