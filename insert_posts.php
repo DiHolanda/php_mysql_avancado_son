@@ -22,7 +22,7 @@ $conn->query($sql);
 //$conn->commit();
 
 // demonstração simples de como optar pela efetivação ou não de uma transaction
-$confirm_save = false;
+$confirm_save = true;
 
 if($confirm_save){
 	$conn->commit();
