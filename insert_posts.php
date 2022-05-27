@@ -16,7 +16,10 @@ $conn->begin_transaction();
 $conn->query($sql);
 
 // o comando rollback avisa para desfazer o que foi executado numa transaction
-$conn->rollback();
+//$conn->rollback();
+
+// já o comando commit efetiva de vez tudo o que foi feito dentro de uma transaction
+$conn->commit();
 
 echo "Start SELECT" . PHP_EOL;
 
