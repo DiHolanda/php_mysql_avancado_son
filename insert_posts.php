@@ -10,7 +10,15 @@ $sql = file_get_contents(__DIR__.'/insert_posts.sql');
 
 //var_dump($sql);
 
+// define que iniciará uma transaction, cujo comando feito no sql pode ser reversível caso aconteça algo
+$conn->begin_transaction();
+
 $conn->query($sql);
+
+// o comando rollback avisa para desfazer o que foi executado numa transaction
+$conn->rollback();
+
+echo "Start SELECT" . PHP_EOL;
 
 $result = $conn->query("SELECT * FROM posts");
 
@@ -22,3 +30,5 @@ foreach($posts as $post){
 	echo $post['title'] . PHP_EOL;
 	echo $post['body'] . PHP_EOL . PHP_EOL;
 }
+
+echo "End SELECT" . PHP_EOL;
