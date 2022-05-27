@@ -19,7 +19,17 @@ $conn->query($sql);
 //$conn->rollback();
 
 // já o comando commit efetiva de vez tudo o que foi feito dentro de uma transaction
-$conn->commit();
+//$conn->commit();
+
+// demonstração simples de como optar pela efetivação ou não de uma transaction
+$confirm_save = false;
+
+if($confirm_save){
+	$conn->commit();
+}
+else{
+	$conn->rollback();
+}
 
 echo "Start SELECT" . PHP_EOL;
 
