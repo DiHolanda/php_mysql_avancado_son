@@ -2,12 +2,12 @@
 
 $conn = require __DIR__.'/utils/connection.php';
 
-/*$sql = 'DROP TABLE posts';
+$sql = 'DROP TABLE posts';
 
 if(!$conn->query($sql)){
 	die('erro');
 }
-*/
+
 
 $sql = '
 	CREATE TABLE posts(
@@ -15,7 +15,7 @@ $sql = '
 		title VARCHAR(50) NOT NULL,
 		body TEXT NOT NULL,
 		FULLTEXT KEY title(title, body)
-		) ENGINE=MyISAM;
+		)
 ';
 
 if(!$conn->query($sql)){
