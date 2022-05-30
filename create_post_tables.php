@@ -2,6 +2,13 @@
 
 $conn = require __DIR__.'/utils/connection.php';
 
+// apaga a tabela subordinada primeiro
+$sql = 'DROP TABLE comments';
+
+if(!$conn->query($sql)){
+	die('erro');
+}
+
 $sql = 'DROP TABLE posts';
 
 if(!$conn->query($sql)){
@@ -25,3 +32,5 @@ if(!$conn->query($sql)){
 $result = $conn->query('DESCRIBE posts');
 
 var_dump($result->fetch_all(MYSQLI_ASSOC));
+
+require __DIR__.'/create_comments_table.php';

@@ -2,14 +2,11 @@
 
 $conn = require __DIR__.'/utils/connection.php';
 
-// elimina o conteúdo da tabela subordinada
-$conn->query('TRUNCATE comments');
-
 // elimina todo o conteúdo da tabela
 // comando usado para ambiente de testes
-$conn->query('TRUNCATE posts');
+//$conn->query('TRUNCATE comments');
 
-$sql = file_get_contents(__DIR__.'/insert_posts.sql');
+$sql = file_get_contents(__DIR__.'/insert_comments.sql');
 
 //var_dump($sql);
 
@@ -36,15 +33,16 @@ else{
 
 echo "Start SELECT" . PHP_EOL;
 
-$result = $conn->query("SELECT * FROM posts");
+$result = $conn->query("SELECT * FROM comments");
 
-$posts = $result->fetch_all(MYSQLI_ASSOC);
+$comments = $result->fetch_all(MYSQLI_ASSOC);
 
-foreach($posts as $post){
+foreach($comments as $comment){
 
 	// PHP_EOL adiciona uma quebra de linha
-	echo $post['title'] . PHP_EOL;
-	echo $post['body'] . PHP_EOL . PHP_EOL;
+	echo $comment['email'] . PHP_EOL;
+	echo $comment['comment'] . PHP_EOL;
+	echo $comment['post_id'] . PHP_EOL . PHP_EOL;
 }
 
 echo "End SELECT" . PHP_EOL;
