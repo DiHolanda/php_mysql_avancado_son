@@ -40,6 +40,7 @@ $comments = $result->fetch_all(MYSQLI_ASSOC);
 foreach($comments as $comment){
 
 	// PHP_EOL adiciona uma quebra de linha
+	echo $comment['id'] . PHP_EOL;
 	echo $comment['email'] . PHP_EOL;
 	echo $comment['comment'] . PHP_EOL;
 	echo $comment['post_id'] . PHP_EOL . PHP_EOL;

@@ -7,7 +7,12 @@ $conn->query('TRUNCATE comments');
 
 // elimina todo o conteúdo da tabela
 // comando usado para ambiente de testes
-$conn->query('TRUNCATE posts');
+// NÃO FUNCIONA COM TRUNCATE DEVIDO A RESTRIÇÃO DE CHAVE ESTRANGEIRA
+// por isso executa comando DELETE
+$conn->query('DELETE FROM posts');
+
+// e reseta a numeração de id para começar do um
+$conn->query('ALTER TABLE posts AUTO_INCREMENT = 1');
 
 $sql = file_get_contents(__DIR__.'/insert_posts.sql');
 
@@ -43,8 +48,11 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
 foreach($posts as $post){
 
 	// PHP_EOL adiciona uma quebra de linha
+	echo $post['id'] . PHP_EOL;
 	echo $post['title'] . PHP_EOL;
 	echo $post['body'] . PHP_EOL . PHP_EOL;
 }
 
 echo "End SELECT" . PHP_EOL;
+
+require __DIR__.'/insert_comments.php';
